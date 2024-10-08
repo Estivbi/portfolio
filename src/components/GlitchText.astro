@@ -1,0 +1,37 @@
+---
+const { text } = Astro.props;
+---
+
+<span class="relative inline-block">
+  {text}
+  <span class="absolute top-0 left-0 w-full h-full bg-red-500 opacity-50 mix-blend-multiply animate-glitch-1"></span>
+  <span class="absolute top-0 left-0 w-full h-full bg-blue-500 opacity-50 mix-blend-multiply animate-glitch-2"></span>
+</span>
+
+<style>
+  @keyframes glitch-1 {
+    0% { clip-path: inset(40% 0 61% 0); }
+    20% { clip-path: inset(92% 0 1% 0); }
+    40% { clip-path: inset(43% 0 1% 0); }
+    60% { clip-path: inset(25% 0 58% 0); }
+    80% { clip-path: inset(54% 0 7% 0); }
+    100% { clip-path: inset(58% 0 43% 0); }
+  }
+
+  @keyframes glitch-2 {
+    0% { clip-path: inset(24% 0 29% 0); }
+    20% { clip-path: inset(54% 0 21% 0); }
+    40% { clip-path: inset(73% 0 1% 0); }
+    60% { clip-path: inset(58% 0 43% 0); }
+    80% { clip-path: inset(31% 0 46% 0); }
+    100% { clip-path: inset(14% 0 33% 0); }
+  }
+
+  .animate-glitch-1 {
+    animation: glitch-1 750ms infinite linear alternate-reverse;
+  }
+
+  .animate-glitch-2 {
+    animation: glitch-2 750ms infinite linear alternate-reverse;
+  }
+</style>
