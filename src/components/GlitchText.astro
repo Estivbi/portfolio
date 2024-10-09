@@ -1,37 +1,95 @@
 ---
+export interface Props {
+	text: string;
+}
+
 const { text } = Astro.props;
 ---
 
-<span class="relative inline-block">
-  {text}
-  <span class="absolute top-0 left-0 w-full h-full bg-red-500 opacity-50 mix-blend-multiply animate-glitch-1"></span>
-  <span class="absolute top-0 left-0 w-full h-full bg-blue-500 opacity-50 mix-blend-multiply animate-glitch-2"></span>
-</span>
+<div class="glitch-wrapper">
+	<div class="glitch" data-text={text}>{text}</div>
+</div>
 
 <style>
-  @keyframes glitch-1 {
-    0% { clip-path: inset(40% 0 61% 0); }
-    20% { clip-path: inset(92% 0 1% 0); }
-    40% { clip-path: inset(43% 0 1% 0); }
-    60% { clip-path: inset(25% 0 58% 0); }
-    80% { clip-path: inset(54% 0 7% 0); }
-    100% { clip-path: inset(58% 0 43% 0); }
-  }
+	.glitch-wrapper {
+		position: relative;
+		display: inline-block;
+	}
 
-  @keyframes glitch-2 {
-    0% { clip-path: inset(24% 0 29% 0); }
-    20% { clip-path: inset(54% 0 21% 0); }
-    40% { clip-path: inset(73% 0 1% 0); }
-    60% { clip-path: inset(58% 0 43% 0); }
-    80% { clip-path: inset(31% 0 46% 0); }
-    100% { clip-path: inset(14% 0 33% 0); }
-  }
+	.glitch {
+		position: relative;
+		font-weight: bold;
+		background: linear-gradient(to bottom, #ffffff 50%, #cccccc 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 
-  .animate-glitch-1 {
-    animation: glitch-1 750ms infinite linear alternate-reverse;
-  }
+	.glitch::before,
+	.glitch::after {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+    background: linear-gradient(to bottom, #ffffff 50%, #cccccc 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 
-  .animate-glitch-2 {
-    animation: glitch-2 750ms infinite linear alternate-reverse;
-  }
+	.glitch::before {
+		left: 2px;
+		text-shadow: -2px 0 #535852;
+		clip: rect(24px, 550px, 90px, 0);
+		animation: glitch-anim-1 2s infinite linear alternate-reverse;
+	}
+
+	.glitch::after {
+		left: -2px;
+		text-shadow: -2px 0 #89f37d;
+		clip: rect(85px, 550px, 140px, 0);
+		animation: glitch-anim-2 2s infinite linear alternate-reverse;
+	}
+
+	@keyframes glitch-anim-1 {
+		0% {
+			clip: rect(141px, 550px, 44px, 0);
+		}
+		20% {
+			clip: rect(61px, 550px, 129px, 0);
+		}
+		40% {
+			clip: rect(17px, 550px, 4px, 0);
+		}
+		60% {
+			clip: rect(86px, 550px, 128px, 0);
+		}
+		80% {
+			clip: rect(141px, 550px, 22px, 0);
+		}
+		100% {
+			clip: rect(21px, 550px, 46px, 0);
+		}
+	}
+
+	@keyframes glitch-anim-2 {
+		0% {
+			clip: rect(87px, 550px, 4px, 0);
+		}
+		20% {
+			clip: rect(19px, 550px, 92px, 0);
+		}
+		40% {
+			clip: rect(15px, 550px, 114px, 0);
+		}
+		60% {
+			clip: rect(100px, 550px, 115px, 0);
+		}
+		80% {
+			clip: rect(121px, 550px, 22px, 0);
+		}
+		100% {
+			clip: rect(35px, 550px, 147px, 0);
+		}
+	}
 </style>
