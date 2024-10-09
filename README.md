@@ -1,4 +1,4 @@
-# Mi Portfolio en Astro
+# Mi Portfolio
 
 Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno generador de sitios estáticos. El diseño está inspirado en la estética de v0 by Vercel, con un enfoque minimalista y moderno.
 
