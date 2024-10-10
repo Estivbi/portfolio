@@ -5,3 +5,39 @@
 body {
   @apply bg-black text-white;
 }
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.holo-card.expanded {
+  z-index: 20;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 80%;
+  max-width: 600px;
+  max-height: 800px;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.card-content h2,
+.card-content p {
+  margin: 0;
+}
