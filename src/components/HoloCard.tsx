@@ -1,88 +1,83 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 interface HoloCardProps {
-  children: React.ReactNode;
   title: string;
   date: string;
   content: string;
+  image: string;
+  children: React.ReactNode;
 }
 
-const HoloCard: React.FC<HoloCardProps> = ({ children, title, date, content }) => {
+const HoloCard: React.FC<HoloCardProps> = ({ title, date, content, image, children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const cardRef = useRef<HTMLButtonElement>(null);
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: { clientX: number; clientY: number; }) => {
-      if (cardRef.current) {
-        const rect = cardRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: ((e.clientX - rect.left) / rect.width) * 100,
-          y: ((e.clientY - rect.top) / rect.height) * 100,
-        });
-      }
-    };
+    if (isExpanded) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [isExpanded]);
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || isExpanded) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    setRotation({ x: rotateX, y: rotateY });
+  };
 
-  const customStyle: React.CSSProperties & { [key: string]: string | number } = {
-    '--m-x': `${mousePosition.x}%`,
-    '--m-y': `${mousePosition.y}%`,
-    '--r-x': '0deg',
-    '--r-y': '0deg',
-    '--bg-x': `${mousePosition.x / 2}%`,
-    '--bg-y': `${mousePosition.y / 2}%`,
-    '--duration': '500ms',
-    '--foil-size': '100%',
-    '--opacity': isExpanded ? '0.6' : '0',
-    '--radius': '48px',
-    '--easing': 'ease',
-    '--transition': 'var(--duration) var(--easing)',
+  const handleMouseLeave = () => {
+    if (!isExpanded) {
+      setRotation({ x: 0, y: 0 });
+    }
+  };
+
+  const handleCardClick = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
-    <li className="flex flex-col items-center cursor-pointer" style={{ opacity: 1 }}>
-      <button
+    <>
+      {isExpanded && <div className="overlay" onClick={handleCardClick}></div>}
+      <div
         ref={cardRef}
-        className="rounded-[48px]"
-        aria-label={`View ${title} details`}
-        onClick={() => setIsExpanded(!isExpanded)}
+        className={`holo-card ${isExpanded ? 'expanded' : ''} relative bg-gray-500 rounded-lg overflow-hidden transition-all duration-300 ease-in-out`}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleCardClick}
+        style={{
+          transform: isExpanded
+            ? 'translate(-50%, -50%)'
+            : `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+          transition: 'transform 0.2s ease',
+          position: isExpanded ? 'fixed' : 'relative',
+          top: isExpanded ? '50%' : 'auto',
+          left: isExpanded ? '50%' : 'auto',
+          width: isExpanded ? '60%' : '300px',
+          height: isExpanded ? '80%' : '200px',
+          maxWidth: isExpanded ? '600px' : 'none',
+          maxHeight: isExpanded ? '800px' : 'none',
+          zIndex: isExpanded ? 20 : 'auto',
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       >
-        <div
-          style={customStyle}
-          className="relative isolate [contain:layout_style] [perspective:600px] transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] will-change-transform w-[320px] [aspect-ratio:17/21]"
-        >
-          <div className="h-full grid will-change-transform origin-center transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] [transform:rotateY(var(--r-x))_rotateX(var(--r-y))] rounded-[var(--radius)] border outline outline-[1px] outline-black hover:[--opacity:0.6] hover:[--duration:200ms] hover:[--easing:linear] hover:filter-none overflow-hidden opacity-95 hover:opacity-100">
-            <div className="w-full h-full grid [grid-area:1/1] mix-blend-soft-light [clip-path:inset(0_0_0_0_round_var(--radius))]">
-              <div className="h-full w-full bg-card flex flex-col items-center justify-center">
-                <div className="w-12 h-12" style={{ opacity: 1 }}>
-                  {children}
-                </div>
-                <p className="text-white font-bold text-xl mt-4" style={{ opacity: 1 }}>
-                  {title}
-                </p>
-                <p className="absolute bottom-4 text-foreground/50 text-xs" style={{ opacity: 1 }}>
-                  {date}
-                </p>
-                <p className="visually-hidden" aria-hidden="true">
-                  {content}
-                </p>
-              </div>
-            </div>
-            <div className="w-full h-full grid [grid-area:1/1] mix-blend-soft-light [clip-path:inset(0_0_1px_0_round_var(--radius))] opacity-[var(--opacity)] transition-opacity transition-background duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] will-change-background [background:radial-gradient(farthest-corner_circle_at_var(--m-x)_var(--m-y),_rgba(255,255,255,0.8)_10%,_rgba(255,255,255,0.65)_20%,_rgba(255,255,255,0)_90%)]"></div>
-          </div>
+        <div className="card-content p-4 text-white">
+          <h2 className="text-xl font-bold">{title}</h2>
+          <p className="text-gray-300">{date}</p>
+          {isExpanded && <p className="mt-4">{content}</p>}
+          <div className="mt-4">{children}</div>
         </div>
-      </button>
-      {isExpanded && (
-        <div className="mt-4 p-4 bg-gray-800 rounded-lg">
-          <p>{content}</p>
-        </div>
-      )}
-    </li>
+      </div>
+    </>
   );
 };
 
