@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import ParticlesBackground from './ParticlesBackground';
 
 interface ExpandableCardProps {
   title: string;
@@ -85,13 +84,12 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({
           boxSizing: 'border-box',
         }}
       >
-        
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="card-content p-4" style={{ maxHeight: '100%', overflowY: 'auto' }}>
           {isExpanded && (
             <img
               src={image}
-              alt="Me Asesoran"
+              alt="Imagen logo"
               className="mx-auto mb-8 mt-4 max-h-32 object-contain"
               style={{ display: 'block' }} 
             />

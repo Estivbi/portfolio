@@ -4,6 +4,7 @@ import type { FunctionComponent } from 'react';
 interface ThreeDImageProps {
   src: string;
   alt: string;
+  className?: string;
 }
 
 const ThreeDImage: FunctionComponent<ThreeDImageProps> = ({ src, alt }) => {
@@ -17,8 +18,8 @@ const ThreeDImage: FunctionComponent<ThreeDImageProps> = ({ src, alt }) => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
+    const rotateX = (y - centerY) / 5;
+    const rotateY = (centerX - x) / 5;
     setRotation({ x: rotateX, y: rotateY });
   };
 
