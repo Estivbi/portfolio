@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import HoloCard from './HoloCard';
 import ExpandableCard from './ExpandableCard';
 import ThreeDImage from './ThreeDImage';
 import { FaArrowRight } from 'react-icons/fa';
-
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -13,13 +11,22 @@ const Portfolio = () => {
       title: 'Proyecto 1', 
       date: '2022 - present',
       content: 'Este proyecto es una aplicación web fullstack que utiliza React para el frontend, Node.js para el backend y MongoDB como base de datos. Implementa autenticación de usuarios, un panel de administración y funcionalidades CRUD.',
-      image: '/placeholder.svg?height=200&width=300'
+      image: '/placeholder.svg?height=200&width=300',
+      technologies: [
+        'TypeScript',
+        'React',
+        'Node.js',
+        'PostgreSQL',
+        'Docker',
+        'Git',
+        'API REST',
+      ]
     },
     { 
       title: 'Proyecto 2', 
       date: '2021 - 2022',
       content: 'Desarrollé una aplicación móvil multiplataforma utilizando React Native y Firebase. La app incluye notificaciones push, almacenamiento en la nube y sincronización en tiempo real entre dispositivos.',
-      image: 'public/car.png'
+      image: '/car.png'
     },
     { 
       title: 'Proyecto 3', 
@@ -31,23 +38,31 @@ const Portfolio = () => {
 
   const experiences = [
     {
-      title: 'Desarrollador Senior',
-      date: '2022 - present',
-      content: 'Lideré un equipo de desarrollo en la creación de aplicaciones web escalables. Implementé arquitecturas serverless y optimicé el rendimiento de aplicaciones existentes.',
-      image: '/placeholder.svg?height=200&width=300'
+      title: 'FullStack Developer en Me Asesoran',
+      date: '2023 - present',
+      content: `
+        > Actualmente desarrollo diversas funcionalidades para la plataforma principal, abarcando tanto tecnologías backend como frontend, que dan servicio a miles de usuarios.
+        
+        > Trabajo en conjunto con el equipo de producto para comprender los requisitos y necesidades de los usuarios, asegurándome de que las nuevas funcionalidades cumplan con sus expectativas y mejoren la experiencia del usuario.
+        
+        > Además, me encargo actualmente de realizar todo el testeo de la aplicación, asegurando su correcto funcionamiento antes de cada lanzamiento.
+        
+        > En los próximos meses, asumiré la responsabilidad de diseñar parte del frontend y también trabajaré en el desarrollo de la versión móvil, lo que mejorará aún más la accesibilidad y funcionalidad para los usuarios.
+        
+        > Me Asesoran Rentas, es un producto innovador que facilita la presentación de declaraciones fiscales a través de la integración con la API del gobierno español, asegurando la autenticación y validación de datos por asesores fiscales.
+      `,
+      image: '/measesoran.png',
+      technologies: [
+        'TypeScript',
+        'React',
+        'Node.js',
+        'PostgreSQL',
+        'Docker',
+        'Git',
+        'API REST',
+      ]
     },
-    {
-      title: 'Desarrollador Full Stack',
-      date: '2020 - 2022',
-      content: 'Desarrollé y mantuve múltiples aplicaciones web utilizando Vue.js en el frontend y Express con PostgreSQL en el backend. Implementé CI/CD y mejoré los tiempos de carga en un 40%.',
-      image: '/placeholder.svg?height=200&width=300'
-    },
-    {
-      title: 'Desarrollador Frontend',
-      date: '2018 - 2020',
-      content: 'Creé interfaces de usuario responsivas y accesibles utilizando React y Redux. Colaboré estrechamente con diseñadores UX/UI para implementar diseños pixel-perfect.',
-      image: '/placeholder.svg?height=200&width=300'
-    }
+    /* agregar mas experiencias */
   ];
 
   return (
@@ -58,24 +73,36 @@ const Portfolio = () => {
         </div>
       </section>
 
-      <nav className="mb-8 flex justify-center">
+      <nav className="mb-8 flex justify-center space-x-4">
         <button
           onClick={() => setActiveSection('about')}
-          className={`mr-4 px-4 py-2 rounded ${activeSection === 'about' ? 'bg-gray-700' : 'bg-transparent'}`}
+          className={`px-4 py-2 rounded-full border-2 border-gradient transition-transform duration-300 ${
+            activeSection === 'about'
+              ? 'transform scale-105 shadow-2xl'
+              : 'hover:transform hover:scale-105 hover:shadow-2xl'
+          }`}
         >
-          Sobre mí
+          <span className="title transition-transform duration-300 hover:scale-110">Sobre mí</span>
         </button>
         <button
           onClick={() => setActiveSection('experience')}
-          className={`px-4 py-2 rounded ${activeSection === 'experience' ? 'bg-gray-700' : 'bg-transparent'}`}
+          className={`px-4 py-2 rounded-full border-2 border-gradient transition-transform duration-300 ${
+            activeSection === 'experience'
+              ? 'transform scale-105 shadow-2xl'
+              : 'hover:transform hover:scale-105 hover:shadow-2xl'
+          }`}
         >
-          Experiencia
+          <span className="title transition-transform duration-300 hover:scale-110">Experiencia</span>
         </button>
         <button
           onClick={() => setActiveSection('projects')}
-          className={`mr-4 px-4 py-2 rounded ${activeSection === 'projects' ? 'bg-gray-700' : 'bg-transparent'}`}
+          className={`px-4 py-2 rounded-full border-2 border-gradient transition-transform duration-300 ${
+            activeSection === 'projects'
+              ? 'transform scale-105 shadow-2xl'
+              : 'hover:transform hover:scale-105 hover:shadow-2xl'
+          }`}
         >
-          Proyectos
+          <span className="title transition-transform duration-300 hover:scale-110">Proyectos</span>
         </button>
       </nav>
 
@@ -113,21 +140,23 @@ const Portfolio = () => {
       </section>
       )}
 
-      {(activeSection === 'projects' || activeSection === 'experience') && (
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-          {(activeSection === 'projects' ? projects : experiences).map((item, index) => (
-            <HoloCard
-              key={index}
-              title={item.title}
-              date={item.date}
-              content={item.content}
-              image={item.image} // Pasamos la prop image
-              children={undefined}          
-              >
-          </HoloCard>
-          ))}
-        </ul>
-      )}
+{(activeSection === 'projects' || activeSection === 'experience') && (
+  <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+    {(activeSection === 'projects' ? projects : experiences).map((item, index) => (
+      <div key={index} className="relative">
+        <ExpandableCard
+          title={item.title}
+          date={item.date}
+          content={item.content}
+          image={item.image}
+          technologies={item.technologies || []}
+          children={undefined}
+          onClick={() => {}}
+        />
+      </div>
+    ))}
+  </ul>
+)}
     </div>
   );
 };

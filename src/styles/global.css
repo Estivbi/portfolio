@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   @apply bg-black text-white;
+  font-family: 'Roboto', sans-serif;
 }
 
 .no-scroll {
@@ -41,3 +43,38 @@ body {
 .card-content p {
   margin: 0;
 }
+
+.border-gradient {
+  border-image: linear-gradient(to right, #4CAF50, #d1d5db) 1;
+}
+
+.title {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.title:hover {
+  transform: scale(1.1);
+}
+
+.card-content h2 {
+  /* Degradado de gris claro para el título */
+  color: #e0e0e0; /* Gris muy claro */
+  transition: color 0.5s ease;
+}
+
+.card-content p {
+  /* Degradado de gris oscuro para el contenido */
+  color: #b0b0b0; /* Gris claro para el texto */
+  transition: color 0.5s ease;
+}
+
+/* Aplicar diferentes niveles de gris al expandir */
+.expandable-card.expanded .card-content h2 {
+  color: #d0d0d0; /* Un poco más oscuro para el título cuando está expandido */
+}
+
+.expandable-card.expanded .card-content p {
+  color: #808080; /* Más oscuro para los párrafos al expandir */
+}
+
