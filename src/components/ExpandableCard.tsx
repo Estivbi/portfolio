@@ -1,24 +1,33 @@
-import React, { useState, useRef, useEffect } from 'react';
-import ThreeDImage from './ThreeDImage';
+import React, { useState, useRef, useEffect } from "react";
+import ParticlesBackground from './ParticlesBackground';
 
 interface ExpandableCardProps {
   title: string;
   date: string;
   content: string;
   image: string;
+  technologies: string[];
   children: React.ReactNode;
+  onClick: () => void;
 }
 
-const ExpandableCard: React.FC<ExpandableCardProps> = ({ title, date, content, image, children }) => {
+const ExpandableCard: React.FC<ExpandableCardProps> = ({
+  title,
+  date,
+  content,
+  image,
+  technologies,
+  children,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isExpanded) {
-      document.body.classList.add('no-scroll');
+      document.body.classList.add("no-scroll");
     } else {
-      document.body.classList.remove('no-scroll');
+      document.body.classList.remove("no-scroll");
     }
   }, [isExpanded]);
 
@@ -47,7 +56,7 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({ title, date, content, i
       {isExpanded && <div className="overlay" onClick={handleCardClick}></div>}
       <div
         ref={cardRef}
-        className={`expandable-card ${isExpanded ? 'expanded' : ''} relative bg-gray-500 rounded-lg overflow-hidden transition-all duration-300 ease-in-out`}
+        className={`expandable-card ${isExpanded ? 'expanded' : ''} relative bg-black rounded-lg overflow-hidden transition-all duration-300 ease-in-out`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={handleCardClick}
@@ -64,14 +73,50 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({ title, date, content, i
           maxWidth: isExpanded ? '600px' : 'none',
           maxHeight: isExpanded ? '800px' : 'none',
           zIndex: isExpanded ? 20 : 'auto',
+          overflowY: isExpanded ? 'auto' : 'hidden', 
+          padding: isExpanded ? '16px' : '0', 
+          background: isExpanded
+            ? 'black' 
+            : 'none', 
+          borderRadius: '20px',
+          border: isExpanded
+            ? '5px solid rgba(255, 255, 255, 0.2)' 
+            : '2px solid rgba(255, 255, 255, 0.4)', 
+          boxSizing: 'border-box',
         }}
       >
-        <ThreeDImage src={image} alt={title} />
-        <div className="card-content p-4">
+        
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="card-content p-4" style={{ maxHeight: '100%', overflowY: 'auto' }}>
+          {isExpanded && (
+            <img
+              src={image}
+              alt="Me Asesoran"
+              className="mx-auto mb-8 mt-4 max-h-32 object-contain"
+              style={{ display: 'block' }} 
+            />
+          )}
           <h2 className="text-xl font-bold">{title}</h2>
           <p className="text-grey-500">{date}</p>
+          {isExpanded && technologies && (
+            <div className="technologies-section mt-4">
+              <div className="flex flex-wrap gap-3 mt-2">
+                {technologies.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="inline-block bg-gray-500 text-white py-1 px-3 rounded-lg text-sm"
+                    style={{ whiteSpace: 'nowrap' }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
           {isExpanded && (
-            <p className="mt-4 transition-opacity duration-300 ease-in-out opacity-100">{content}</p>
+            <p className="mt-4 transition-opacity duration-300 ease-in-out opacity-100 whitespace-pre-line">
+              {content}
+            </p>
           )}
           <div className="mt-4">{children}</div>
         </div>

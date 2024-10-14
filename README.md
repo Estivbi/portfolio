@@ -21,9 +21,14 @@ Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno
 ## Cómo ejecutar el proyecto
 
 1. Clona este repositorio
-2. Instala las dependencias: npm install -D tailwindcss @astrojs/tailwind @astrojs/react react react-dom
-3. Ejecuta el servidor de desarrollo: npm run dev
+2. Instala las dependencias: `npm install -D tailwindcss @astrojs/tailwind @astrojs/react react react-dom`
+3. Ejecuta el servidor de desarrollo: `npm run dev`
 4. Abre `http://localhost:4321/` en tu navegador
+
+## Generar el SVG del favicon
+
+Para generar el archivo SVG del favicon, ejecuta el siguiente comando:
+`node src/scripts/renderFavicon.js`
 
 ## Estructura del proyecto
 
@@ -31,6 +36,7 @@ Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno
 - `src/components/`: Componentes reutilizables (Astro y React)
 - `src/layouts/`: Layouts de Astro
 - `src/styles/`: Estilos globales
+- `src/scripts/`: Scripts para tareas automatizadas
 
 ## Personalización
 
