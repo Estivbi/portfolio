@@ -2,12 +2,6 @@
 
 ## 📋 Tareas por Hacer
 
-### 1. **Convertir "Sobre mí" en una Card**
-   - **Descripción:** La sección "Sobre mí" aún no está implementada como una tarjeta, lo que haría que el diseño sea más consistente con el resto de las secciones de la página.
-   - **Acciones:**
-     - Crear un componente `AboutMeCard` que contenga una breve descripción sobre ti, tu foto (o avatar), y enlaces relevantes (por ejemplo, a tu perfil de LinkedIn).
-     - Estilizarlo de manera coherente con las demás cards para mantener la uniformidad del diseño en todo el portafolio.
-
 ---
 
 ### 2. **Actualizar la Sección de Proyectos con Enlaces Reales**
@@ -26,4 +20,8 @@
      - Revisar y ajustar los breakpoints en **Tailwind CSS** o en el framework que estés utilizando para asegurar que el diseño sea fluido en dispositivos móviles, tabletas y escritorios.
 
 ---
+
+---
+
+### 4. **Subir la web a netlify o cloudfare o vercel**
 
