@@ -21,7 +21,3 @@
 
 ---
 
----
-
-### 4. **Subir la web a netlify o cloudfare o vercel**
-
