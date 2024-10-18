@@ -7,7 +7,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ children }) => {
 	return (
-		<div className="card m2">
+		<div className="card m2 w-full max-w-none mx-auto p-4">
 		  <div className="relative z-10 card-content">
 			{children}
 		  </div>

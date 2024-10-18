@@ -6,6 +6,7 @@
 body {
   @apply bg-black text-white;
   font-family: 'Roboto', sans-serif;
+ 
 }
 
 .no-scroll {
@@ -131,6 +132,25 @@ body {
   color: #808080;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .m2 {
+    width: 90%; /* Ajustar el ancho para pantallas tipo tablet */
+    height: auto; /* Ajustar la altura automáticamente */
+    padding: 1rem; /* Agregar padding */
+    margin: 0 auto; /* Centrar la tarjeta */
+  }
+}
+
+@media (max-width: 640px) {
+  .m2 {
+    width: 140%; /* Aumenta el ancho de la card */
+    height: auto; /* Ajustar la altura automáticamente */
+    padding: 1.5rem; /* Agregar padding */
+    margin: 0 auto; /* Centrar la tarjeta */
+    margin-left: -18%; /* Ajustar el centrado */
+  }
+}
 
 /* Faster blur animation */
 @keyframes blur-animation {

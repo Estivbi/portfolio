@@ -4,6 +4,7 @@ import ThreeDImage from './ThreeDImage';
 import { FaArrowRight } from 'react-icons/fa';
 import Card from './Card';
 
+
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isCardExpanded, setIsCardExpanded] = useState(false); 
@@ -119,7 +120,7 @@ const Portfolio = () => {
       </nav>
 
       {activeSection === 'about' && (
-        <div className="p-8"> {/* Contenedor con padding */}
+        <div className="p-8">
           <Card>
             <section className="about-content mt-8">
               <div className="text-justify max-w-2xl mx-auto space-y-4">
@@ -144,7 +145,7 @@ const Portfolio = () => {
                   </li>
                   <li className="flex items-center">
                     <FaArrowRight className="mr-2 transition-transform duration-300 transform hover:translate-x-2" />
-                    Machine Learning / Inteligencia Artificial
+                    ML/AI
                   </li>
                 </ul>
                 <p>

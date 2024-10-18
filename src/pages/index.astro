@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AnimatedBackground from '../components/AnimatedBackground.astro';
 import GlitchText from '../components/GlitchText.astro';
 import Portfolio from '../components/Portfolio';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import BackgroundMotion from '../components/BackgroundMotion';
 ---
 
 <Layout title="Carolina Rodríguez">
 	<div class="relative min-h-screen bg-black text-white overflow-hidden">
-		<AnimatedBackground />
+		<BackgroundMotion client:load />
 		<div class="relative z-10 p-8 max-w-6xl mx-auto">
 			<header class="mb-12 text-center">
 				<h1 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl">
