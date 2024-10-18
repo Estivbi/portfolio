@@ -41,7 +41,6 @@ const ThreeDImage: FunctionComponent<ThreeDImageProps> = ({ src, alt }) => {
         style={{
           transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transition: 'transform 0.1s',
-		  opacity: 0.8
         }}
       />
     </div>

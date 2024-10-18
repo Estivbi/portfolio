@@ -67,7 +67,7 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({
           position: isExpanded ? 'fixed' : 'relative',
           top: isExpanded ? '50%' : 'auto',
           left: isExpanded ? '50%' : 'auto',
-          width: isExpanded ? '60%' : '300px',
+          width: isExpanded ? '80%' : '300px',
           height: isExpanded ? '90%' : '200px',
           maxWidth: isExpanded ? '600px' : 'none',
           maxHeight: isExpanded ? '800px' : 'none',
