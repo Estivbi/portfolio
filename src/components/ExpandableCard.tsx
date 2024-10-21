@@ -5,9 +5,11 @@ interface ExpandableCardProps {
   date: string;
   content: string;
   image: string;
+  link: string;
   technologies: string[];
   children: React.ReactNode;
   onClick: () => void;
+  isExpanded: boolean;
 }
 
 const ExpandableCard: React.FC<ExpandableCardProps> = ({
@@ -15,6 +17,7 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({
   date,
   content,
   image,
+  link,
   technologies,
   children,
 }) => {
@@ -87,12 +90,14 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="card-content p-4" style={{ maxHeight: '100%', overflowY: 'auto' }}>
           {isExpanded && (
-            <img
-              src={image}
-              alt="Imagen logo"
-              className="mx-auto mb-8 mt-4 max-h-32 object-contain"
-              style={{ display: 'block' }} 
-            />
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              <img
+                src={image}
+                alt="Imagen logo"
+                className="mx-auto mb-8 mt-4 object-contain cursor-pointer hover:opacity-80 hover:border-2 hover:border-blue-500"
+                style={{ display: 'block', maxHeight: '50vh', maxWidth: '100%' }} 
+              />
+            </a>
           )}
           <h2 className="text-xl font-bold">{title}</h2>
           <p className="text-grey-500">{date}</p>
