@@ -16,7 +16,7 @@ const Portfolio = () => {
       content: `
       Este proyecto es una página web para practicar con Astro y React desarrollada por Carolina Rodríguez. La página muestra un contador que, cuando finaliza, enseña el regalo que contiene. También tiene un calendario que, cuando se selecciona una fecha, se guarda en la base de datos.
       `,
-      image: 'public/web-cuentaatras.webp',
+      image: '/web-cuentaatras.webp',
       link: 'https://cuenta-atras-cumple.netlify.app/',
       technologies: [
         'TypeScript',
@@ -36,7 +36,7 @@ const Portfolio = () => {
       content: `
       Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno generador de sitios estáticos.
       `,
-      image: 'public/portfolio.jpg',
+      image: '/portfolio.jpg',
       link: 'https://carolinarodriguez.netlify.app/',
       technologies: [
         'TypeScript',
@@ -51,7 +51,7 @@ const Portfolio = () => {
       content: `
       Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno generador de sitios estáticos.
       `,
-      image: 'public/project-measesoran-rentas.ng1TKtpA_Z1xqR3.webp',
+      image: '/project-measesoran-rentas.ng1TKtpA_Z1xqR3.webp',
       link: 'https://rentas.measesoran.com/login',
       technologies: [
         'TypeScript',
