@@ -11,10 +11,48 @@ const Portfolio = () => {
 
   const projects = [
     { 
-      title: 'Proyecto 1', 
-      date: '2022 - present',
-      content: 'Este proyecto es una aplicación web fullstack que utiliza React para el frontend, Node.js para el backend y MongoDB como base de datos. Implementa autenticación de usuarios, un panel de administración y funcionalidades CRUD.',
-      image: '/placeholder.svg?height=200&width=300',
+      title: 'Cuenta atrás', 
+      date: '2024',
+      content: `
+      Este proyecto es una página web para practicar con Astro y React desarrollada por Carolina Rodríguez. La página muestra un contador que, cuando finaliza, enseña el regalo que contiene. También tiene un calendario que, cuando se selecciona una fecha, se guarda en la base de datos.
+      `,
+      image: 'public/web-cuentaatras.webp',
+      link: 'https://cuenta-atras-cumple.netlify.app/',
+      technologies: [
+        'TypeScript',
+        'React',
+        'Node.js',
+        'PostgreSQL',
+        'Astro.js',
+        'Tailwind CSS',
+        'Axios',
+        'Express.js',
+        'Cors',
+      ]
+    },
+    { 
+      title: 'Portfolio', 
+      date: '2024',
+      content: `
+      Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno generador de sitios estáticos.
+      `,
+      image: 'public/portfolio.jpg',
+      link: 'https://carolinarodriguez.netlify.app/',
+      technologies: [
+        'TypeScript',
+        'React',
+        'Astro.js',
+        'Tailwind CSS',
+      ]
+    },
+    {
+      title: 'Me Asesoran Rentas', 
+      date: '2023',
+      content: `
+      Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno generador de sitios estáticos.
+      `,
+      image: 'public/project-measesoran-rentas.ng1TKtpA_Z1xqR3.webp',
+      link: 'https://rentas.measesoran.com/login',
       technologies: [
         'TypeScript',
         'React',
@@ -24,25 +62,13 @@ const Portfolio = () => {
         'Git',
         'API REST',
       ]
-    },
-    { 
-      title: 'Proyecto 2', 
-      date: '2021 - 2022',
-      content: 'Desarrollé una aplicación móvil multiplataforma utilizando React Native y Firebase. La app incluye notificaciones push, almacenamiento en la nube y sincronización en tiempo real entre dispositivos.',
-      image: '/car.png'
-    },
-    { 
-      title: 'Proyecto 3', 
-      date: '2020 - 2021',
-      content: 'Creé un sitio web estático de alto rendimiento utilizando Next.js y Tailwind CSS. El sitio incluye generación de páginas estáticas, optimización de imágenes y está desplegado en Vercel para un rendimiento óptimo.',
-      image: '/placeholder.svg?height=200&width=300'
-    },
+    }
   ];
 
   const experiences = [
     {
       title: 'FullStack Developer en Me Asesoran',
-      date: '2023 - present',
+      date: '2023',
       content: `
         > Actualmente desarrollo diversas funcionalidades para la plataforma principal, abarcando tanto tecnologías backend como frontend, que dan servicio a miles de usuarios.
         
@@ -55,6 +81,7 @@ const Portfolio = () => {
         > Me Asesoran Rentas, es un producto innovador que facilita la presentación de declaraciones fiscales a través de la integración con la API del gobierno español, asegurando la autenticación y validación de datos por asesores fiscales.
       `,
       image: '/measesoran.png',
+      link: 'https://rentas.measesoran.com/login',
       technologies: [
         'TypeScript',
         'React',
@@ -166,9 +193,10 @@ const Portfolio = () => {
                 date={item.date}
                 content={item.content}
                 image={item.image}
+                link={item.link}
                 technologies={item.technologies || []}
                 children={undefined}
-                onClick={() => {}}
+                onClick={() => { } } isExpanded={false}    
               />
             </div>
           ))}
