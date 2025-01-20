@@ -49,7 +49,13 @@ const Portfolio = () => {
       title: 'Me Asesoran Rentas', 
       date: '2023',
       content: `
-      Este proyecto es un portfolio personal desarrollado utilizando Astro, un moderno generador de sitios estáticos.
+      Desarrollo de una plataforma innovadora que facilita la presentación de declaraciones fiscales mediante la integración con la API del gobierno español.
+
+      Implementación de AWS S3 para el almacenamiento seguro de documentos, garantizando la integridad de los datos mediante la validación de hashes MD5.
+
+      Diseño y desarrollo de la interfaz de usuario y la versión móvil, mejorando la accesibilidad y funcionalidad para los usuarios.
+
+      Colaboración con el equipo de producto para asegurar que las nuevas funcionalidades cumplan con las expectativas de los usuarios.
       `,
       image: '/project-measesoran-rentas.ng1TKtpA_Z1xqR3.webp',
       link: 'https://rentas.measesoran.com/login',
@@ -70,13 +76,15 @@ const Portfolio = () => {
       title: 'FullStack Developer en Me Asesoran',
       date: '2023',
       content: `
-        > Actualmente desarrollo diversas funcionalidades para la plataforma principal, abarcando tanto tecnologías backend como frontend, que dan servicio a miles de usuarios.
+        > Desarrollo de diversas funcionalidades para la plataforma principal, abarcando tanto tecnologías backend como frontend, que dan servicio a miles de usuarios.
         
         > Trabajo en conjunto con el equipo de producto para comprender los requisitos y necesidades de los usuarios, asegurándome de que las nuevas funcionalidades cumplan con sus expectativas y mejoren la experiencia del usuario.
         
-        > Además, me encargo actualmente de realizar todo el testeo de la aplicación, asegurando su correcto funcionamiento antes de cada lanzamiento.
+        > Implementación y gestión de AWS S3 para el almacenamiento seguro y escalable de documentos, garantizando la integridad de los datos mediante el uso de Content-MD5 y la validación de hashes.
+
+        > Responsable de todo el proceso de testing de la aplicación, asegurando su correcto funcionamiento antes de cada lanzamiento
         
-        > En los próximos meses, asumiré la responsabilidad de diseñar parte del frontend y también trabajaré en el desarrollo de la versión móvil, lo que mejorará aún más la accesibilidad y funcionalidad para los usuarios.
+        > Diseño y desarrollo de la interfaz de usuario (frontend) y la versión móvil de la plataforma, mejorando la accesibilidad y funcionalidad para los usuarios.
         
         > Me Asesoran Rentas, es un producto innovador que facilita la presentación de declaraciones fiscales a través de la integración con la API del gobierno español, asegurando la autenticación y validación de datos por asesores fiscales.
       `,
@@ -90,6 +98,7 @@ const Portfolio = () => {
         'Docker',
         'Git',
         'API REST',
+        'Cloud'
       ]
     },
     /* agregar mas experiencias */
